@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yen — Diseñador gráfico</title>
 
-<title>Yenien Corvalán</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -13,146 +13,135 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
 body{
-font-family:Arial, sans-serif;
-overflow:hidden;
 background:black;
+color:white;
+overflow:hidden;
 }
 
-/* CONTENEDOR */
+/* CONTENEDOR PRINCIPAL */
 
-.slider{
-
-display:flex;
-
-width:100vw;
+.container{
 height:100vh;
-
-overflow-x:scroll;
-scroll-snap-type:x mandatory;
-
+overflow-y:scroll;
+scroll-snap-type:y mandatory;
 }
 
-/* SLIDE */
+/* CADA DIAPOSITIVA */
 
 .slide{
-
-min-width:100vw;
 height:100vh;
-
-scroll-snap-align:center;
-
+width:100%;
 position:relative;
-
+scroll-snap-align:start;
 display:flex;
 justify-content:center;
 align-items:center;
-
 }
 
-/* imagen fondo */
+/* IMAGEN DE FONDO */
 
-.slide img{
-
+.slide img.bg{
 position:absolute;
-
 width:100%;
 height:100%;
-
 object-fit:cover;
-
+z-index:0;
 }
 
-/* overlay */
+/* DEGRADE ESTILO APP */
 
 .overlay{
-
 position:absolute;
-inset:0;
-background:rgba(0,0,0,0.35);
-
+bottom:0;
+width:100%;
+height:60%;
+background:linear-gradient(
+to top,
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.6),
+rgba(0,0,0,0)
+);
+z-index:1;
 }
 
-/* contenido */
+/* CONTENIDO */
 
 .content{
-
 position:relative;
 z-index:2;
-text-align:center;
-color:white;
-
+width:85%;
+max-width:500px;
 }
+
+/* LOGO */
 
 .logo{
-
-width:180px;
+width:120px;
 margin-bottom:20px;
-
 }
 
-.title{
+/* TEXTO */
 
-font-size:22px;
-
+h1{
+font-size:32px;
+font-weight:800;
+margin-bottom:10px;
 }
 
-/* UI fija */
+p{
+opacity:0.8;
+}
 
-.fixedUI{
+/* BOTON FIJO GLOBAL */
 
+.cta{
 position:fixed;
-
-bottom:30px;
-left:0;
-right:0;
-
-display:flex;
-justify-content:center;
-gap:25px;
-
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#ff4d00;
+padding:16px 28px;
+border-radius:50px;
+font-weight:600;
 z-index:999;
-
+display:flex;
+gap:15px;
+align-items:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* botón */
-
-.contact{
-
-border:1px solid #f4c542;
-padding:12px 22px;
-
-color:#f4c542;
-text-decoration:none;
-
+.cta span{
+opacity:0.7;
+font-weight:400;
 }
 
-/* instagram */
+/* BOTON SIGUIENTE */
 
-.insta{
-
-color:#f4c542;
-text-decoration:none;
-
+.next{
+position:absolute;
+bottom:100px;
+left:50%;
+transform:translateX(-50%);
+opacity:0.7;
+font-size:14px;
 }
 
 </style>
 
 </head>
-
 <body>
 
-
-<div class="slider">
-
+<div class="container">
 
 <!-- PORTADA -->
 
 <section class="slide">
 
-<img src="foto.jpg">
+<img src="foto.jpg" class="bg">
 
 <div class="overlay"></div>
 
@@ -160,11 +149,13 @@ text-decoration:none;
 
 <img src="logo.png" class="logo">
 
-<div class="title">
-Yenien Corvalán
-</div>
+<h1>Yen</h1>
+
+<p>Diseñador gráfico autodidacta</p>
 
 </div>
+
+<div class="next">deslizar ↓</div>
 
 </section>
 
@@ -173,15 +164,15 @@ Yenien Corvalán
 
 <section class="slide">
 
-<img src="proyecto1.jpg">
+<img src="proyecto1.jpg" class="bg">
 
 <div class="overlay"></div>
 
 <div class="content">
 
-<div class="title">
-Proyecto 1
-</div>
+<h1>Proyecto 01</h1>
+
+<p>Identidad visual</p>
 
 </div>
 
@@ -192,15 +183,15 @@ Proyecto 1
 
 <section class="slide">
 
-<img src="proyecto2.jpg">
+<img src="proyecto2.jpg" class="bg">
 
 <div class="overlay"></div>
 
 <div class="content">
 
-<div class="title">
-Proyecto 2
-</div>
+<h1>Proyecto 02</h1>
+
+<p>Diseño editorial</p>
 
 </div>
 
@@ -210,24 +201,13 @@ Proyecto 2
 </div>
 
 
-<!-- BOTON FIJO -->
+<!-- BOTON GLOBAL -->
 
-<div class="fixedUI">
+<div class="cta">
 
-<a
-class="contact"
-href="https://wa.me/549XXXXXXXXXX"
-target="_blank">
-INICIAR PROYECTO
-</a>
+Iniciar proyecto
 
-
-<a
-class="insta"
-href="https://instagram.com/yenysumundo"
-target="_blank">
-@yenysumundo
-</a>
+<span>@yenysumundo</span>
 
 </div>
 
