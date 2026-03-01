@@ -2,482 +2,207 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Yenien Corvalán</title>
 
 <style>
 
-body{
+/* ======================
+   RESET
+====================== */
+
+*{
 margin:0;
-background:black;
-color:#f4c542;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Arial, sans-serif;
-overflow-x:hidden;
-overflow-y:auto;
+background:url("foto.jpg") center/cover no-repeat fixed;
+color:#f4c542;
 }
 
-/* FONDO */
-
-.bg{
-position:fixed;
-width:100%;
-height:100%;
-background:url("foto.jpg") center/cover no-repeat;
-filter:contrast(140%) saturate(130%);
-z-index:-3;
-animation:bgShift 12s infinite alternate;
-}
-
-/* overlay oscuro */
-.bg::after{
+/* overlay sutil */
+body::before{
 content:"";
-position:absolute;
-inset:0;
-background:rgba(10,8,4,0.28); /* ajustable */
-pointer-events:none;
-}
-
-@keyframes bgShift{
-0%{transform:scale(1) translate(0,0);}
-100%{transform:scale(1.05) translate(-20px,-10px);}
-}
-
-/* RUIDO */
-
-.noise{
 position:fixed;
-width:100%;
-height:100%;
-background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-opacity:0.35;
-z-index:-2;
-animation:noiseMove 0.4s infinite;
+inset:0;
+background:rgba(0,0,0,0.25);
+z-index:0;
 }
 
-@keyframes noiseMove{
-0%{transform:translate(0,0)}
-25%{transform:translate(1px,-1px)}
-50%{transform:translate(-1px,1px)}
-75%{transform:translate(1px,1px)}
-100%{transform:translate(-1px,-1px)}
-}
-
-/* CENTRO */
-
-.center{
+/* contenedor principal */
+.container{
 position:relative;
+z-index:1;
+
+min-height:100vh;
+
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 
-width:100%;
-max-width:900px;
-
-margin:0 auto;
-padding-top:120px;
-padding-bottom:120px;
-
-z-index:2;
+padding:40px 20px;
 }
 
-/* LOGO ANIMACION POSTER */
+/* logo */
 
 .logo{
-width:240px;
-margin-bottom:2px;
+width:180px;
+margin-bottom:30px;
+}
+
+/* textos */
+
+.bio{
+text-align:center;
+font-size:15px;
+line-height:1.5;
+margin-bottom:25px;
+max-width:300px;
+}
+
+.link{
+margin:8px 0;
+text-decoration:underline;
 cursor:pointer;
-animation:logoFloat 4s infinite ease-in-out;
 }
 
-.logo:hover{
-animation:logoGlitch 0.2s infinite;
-}
+/* proyectos */
 
-@keyframes logoFloat{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-}
-
-@keyframes logoGlitch{
-0%{transform:translate(0)}
-25%{transform:translate(-2px,2px)}
-50%{transform:translate(2px,-2px)}
-75%{transform:translate(-2px,-1px)}
-100%{transform:translate(0)}
-}
-
-/* GRID */
-.grid{
+.projects{
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
-gap:20px;
-
+grid-template-columns:1fr 1fr;
+gap:14px;
 width:100%;
-max-width:700px;
-
-margin-top:40px;
-margin-bottom:40px;
+max-width:340px;
+margin:30px 0;
 }
 
-/* PROYECTO */
-.project{
-width:100%;
-height:100%;
-border:1px solid #ffc800;
-cursor:pointer;
-overflow:hidden;
-position:relative;
-transition:transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* IMAGEN */
 .project img{
 width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-transition:0.4s;
+border-radius:4px;
+transition:0.3s;
 }
 
-.project:hover img{
-transform:scale(1.05);
+.project img:hover{
+transform:scale(1.04);
 }
 
-/* BOTON */
+/* botón */
+
 .contact{
-position: static;
-margin-top: 20px;
-margin-bottom: 20px;
+margin-top:20px;
 
-border: 1px solid #f4c542;
-padding: 10px 30px;
-cursor: pointer;
-transition: 0.3s;
-
+border:1px solid #f4c542;
 color:#f4c542;
+
+padding:14px 26px;
+
 text-decoration:none;
-background:transparent;
+
+display:inline-block;
+
+transition:0.3s;
 }
 
-/* fuerza color amarillo siempre */
-.contact,
-.contact:link,
-.contact:visited,
-.contact:active{
-color:#f4c542;
-text-decoration:none;
-}
-
-/* hover */
 .contact:hover{
 background:#f4c542;
 color:black;
 }
 
-/* TEXTOS */
-
-.side{
-position:fixed;
-
-font-size:15px; /* más grande */
-max-width:220px;
-line-height:1.5;
-
-color:#ffc800;
-
-text-shadow:
-0 0 6px rgba(0,0,0,0.8),
-0 2px 6px rgba(0,0,0,0.9),
-0 0 14px rgba(0,0,0,0.6);
-
-cursor:pointer;
-transition:0.3s;
-}
-
-.side:hover{
-transform:translateX(3px);
-opacity:1;
-}
-
-/* IZQUIERDA */
-.left.top{
-left:40px;
-top:25%;
-}
-
-.left.middle{
-left:40px;
-top:45%;
-}
-
-.left.bottom{
-left:40px;
-top:65%;
-}
-
-
-/* DERECHA */
-.right.top{
-right:40px;
-top:25%;
-text-align:right;
-}
-
-.right.middle{
-right:40px;
-top:45%;
-text-align:right;
-}
-
-.right.bottom{
-right:40px;
-top:65%;
-text-align:right;
-}
-
-/* NOMBRE */
-
-.name{
-position:fixed;
-bottom:20px;
-width:100%;
-text-align:center;
-letter-spacing:12px;
-font-size:14px;
-animation:nameFlicker 6s infinite;
-}
-
-@keyframes nameFlicker{
-0%,100%{opacity:1}
-50%{opacity:0.7}
-}
-
-/* FULLSCREEN */
-
-.viewer{
-position:fixed;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:999;
-cursor:pointer;
-animation:fadeIn 0.3s;
-}
-
-.viewer img{
-max-width:90%;
-max-height:90%;
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
-
-/* ===================================
-   FIX REAL MOBILE — FORZADO
-=================================== */
-
-@media screen and (max-width:768px){
-
-/* reset general */
-.side,
-.side.left,
-.side.right,
-.side.top,
-.side.middle,
-.side.bottom{
-position:relative !important;
-
-top:auto !important;
-left:auto !important;
-right:auto !important;
-bottom:auto !important;
-
-display:block !important;
-
-width:100% !important;
-max-width:420px;
-
-margin:12px auto !important;
-
-text-align:center !important;
-
-font-size:15px !important;
-}
-
-/* contenedor central */
-.center{
-position:relative !important;
-
-top:auto !important;
-left:auto !important;
-transform:none !important;
-
-width:100% !important;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-
-padding-top:60px;
-}
-
-/* logo */
-.logo{
-width:220px !important;
-margin-bottom:30px !important;
-}
-
-/* proyectos */
-.projects{
-display:grid !important;
-
-grid-template-columns:1fr 1fr !important;
-
-gap:16px !important;
-
-width:100% !important;
-max-width:420px;
-
-padding:0 20px;
-}
-
-.project img{
-width:100% !important;
-height:auto !important;
-}
-
-/* botón */
-.contact{
-font-size:16px !important;
-padding:14px 28px !important;
-margin-top:30px !important;
-}
-
 /* footer */
+
 .footer{
-position:relative !important;
-margin-top:40px !important;
-text-align:center !important;
+margin-top:40px;
+font-size:12px;
+letter-spacing:4px;
+opacity:0.7;
+}
+
+
+/* ======================
+   DESKTOP
+====================== */
+
+@media(min-width:900px){
+
+.logo{
+width:240px;
+}
+
+.projects{
+grid-template-columns:repeat(4, 1fr);
+max-width:700px;
+}
+
+.bio{
+font-size:16px;
 }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-<div class="noise"></div>
+<div class="container">
 
-<!-- IZQUIERDA -->
+<img src="logo.png" class="logo">
 
-<div class="side left top">
+<div class="bio">
 Diseñador gráfico autodidacta.<br>
 Exploro identidad, imagen y emoción.
 </div>
 
-<a href="https://www.youtube.com/@yeniencq" target="_blank" class="side left middle link">
-romantizo escenas comunes<br>
-para la nostalgia del presente
+<a href="https://youtube.com/@yeniencq" target="_blank" class="link">
+romantizo escenas comunes
 </a>
 
-<a href="https://www.youtube.com/watch?v=Bv6BqbV-kiU" target="_blank" class="side left bottom link">
-escuchá mi canción Contagiando Optimismo
+<a href="https://youtube.com/watch?v=Bv6BqbV-kiU" target="_blank" class="link">
+escuchá mi canción
 </a>
 
-<!-- DERECHA -->
 
-<a href="https://www.instagram.com/yeniencq/" target="_blank" class="side right top link">
-@yeniencq
+<div class="projects">
+
+<a href="proyecto1.jpg" class="project">
+<img src="proyecto1.jpg">
 </a>
 
-<a href="https://www.youtube.com/watch?v=yJAJ0kXYVKo" target="_blank" class="side right middle link">
-escuchá mi canción construir desde el amor
+<a href="proyecto2.jpg" class="project">
+<img src="proyecto2.jpg">
 </a>
 
-<a href="https://www.instagram.com/yenysumundo/" target="_blank" class="side right bottom link">
-@yenysumundo
+<a href="proyecto3.jpg" class="project">
+<img src="proyecto3.jpg">
 </a>
 
-<!-- CENTRO -->
-
-<div class="center">
-
-<img src="logo.png" class="logo">
-
-<div class="grid">
-
-<div class="project" onclick="openProject(['proyecto1/1.png','proyecto1/2.png','proyecto1/3.png'])">
-<img src="proyecto1/1.png">
-</div>
-
-<div class="project" onclick="openProject(['proyecto2/1.png','proyecto2/2.png'])">
-<img src="proyecto2/1.png">
-</div>
-
-<div class="project" onclick="openProject(['proyecto3/1.png','proyecto3/2.png'])">
-<img src="proyecto3/1.png">
-</div>
-
-<div class="project" onclick="openProject(['proyecto4/1.png','proyecto4/2.png','proyecto4/3.png'])">
-<img src="proyecto4/1.png">
-</div>
+<a href="proyecto4.jpg" class="project">
+<img src="proyecto4.jpg">
+</a>
 
 </div>
 
-<a href="https://wa.me/5492995814618?text=Hola,%20quiero%20trabajar%20con%20vos%20en%20un%20nuevo%20proyecto.%20Soy%20[Tu%20Nombre].%20Me%20gustaría%20recibir%20información%20sobre%20tus%20servicios%20y%20metodología."
-target="_blank"
-class="contact">
+
+<a
+class="contact"
+href="https://wa.me/5492995814618?text=Hola%20Yenien,%20quiero%20iniciar%20un%20proyecto"
+target="_blank">
 INICIAR PROYECTO
 </a>
 
-</div>
 
-<div class="name">
+<div class="footer">
 YENIEN CORVALÁN
 </div>
 
-<script>
-
-function openProject(images){
-
-let index = 0
-
-let viewer=document.createElement("div")
-viewer.className="viewer"
-
-let img=document.createElement("img")
-img.src=images[index]
-
-viewer.appendChild(img)
-
-viewer.onclick=function(){
-
-index++
-
-if(index>=images.length){
-viewer.remove()
-}else{
-img.src=images[index]
-}
-
-}
-
-document.body.appendChild(viewer)
-
-}
-
-</script>
+</div>
 
 </body>
-
 </html>
-
-
-
 
