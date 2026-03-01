@@ -277,19 +277,18 @@ from{opacity:0}
 to{opacity:1}
 }
 
-
-/* =========================
-   VERSION CELULAR
-========================= */
+/* ===================================
+   VERSION MOBILE PROFESIONAL
+=================================== */
 
 @media (max-width:768px){
 
-/* fondo scrolleable */
+/* permitir scroll natural */
 body{
 overflow-y:auto;
 }
 
-/* bloque central */
+/* contenedor central */
 .center{
 position:relative;
 top:auto;
@@ -297,22 +296,31 @@ left:auto;
 transform:none;
 
 width:100%;
-padding-top:80px;
-padding-bottom:80px;
+padding-top:60px;
+padding-bottom:60px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-/* logo */
+/* LOGO GRANDE */
 .logo{
-width:180px;
+width:220px;
 margin-bottom:30px;
 }
 
-/* grilla proyectos */
+/* GRILLA PROYECTOS GRANDE Y VISIBLE */
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:14px;
+gap:18px;
+
+width:100%;
+max-width:400px;
+
 padding:0 20px;
+margin-bottom:30px;
 }
 
 .grid img{
@@ -320,24 +328,47 @@ width:100%;
 height:auto;
 }
 
-/* textos laterales pasan abajo */
+/* TEXTOS ABAJO, GRANDES Y LEGIBLES */
 .side{
-position:relative;
+position:relative !important;
+
+top:auto !important;
+left:auto !important;
+right:auto !important;
+bottom:auto !important;
+
 display:block;
+
+width:100%;
+max-width:400px;
+
+margin:10px auto;
 
 text-align:center;
 
-margin:12px auto;
+font-size:15px;
+line-height:1.4;
+
 padding:0 20px;
 }
 
-/* boton */
+/* BOTON GRANDE */
 .contact{
-margin-top:30px;
+font-size:16px;
+
+padding:14px 28px;
+
+margin-top:20px;
+}
+
+/* footer */
+.footer{
+position:relative;
+margin-top:40px;
+text-align:center;
 }
 
 }
-
 </style>
 </head>
 
@@ -449,5 +480,6 @@ document.body.appendChild(viewer)
 </body>
 
 </html>
+
 
 
