@@ -278,20 +278,41 @@ to{opacity:1}
 }
 
 
-/* ========================= */
-/* MOBILE */
-/* ========================= */
+/* =========================
+   VERSION CELULAR
+========================= */
 
 @media (max-width:768px){
 
+/* fondo scrolleable */
+body{
+overflow-y:auto;
+}
+
+/* bloque central */
 .center{
+position:relative;
+top:auto;
+left:auto;
+transform:none;
+
+width:100%;
 padding-top:80px;
 padding-bottom:80px;
 }
 
+/* logo */
+.logo{
+width:180px;
+margin-bottom:30px;
+}
+
+/* grilla proyectos */
 .grid{
-grid-template-columns:repeat(2, 1fr);
-gap:16px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+padding:0 20px;
 }
 
 .grid img{
@@ -299,26 +320,23 @@ width:100%;
 height:auto;
 }
 
+/* textos laterales pasan abajo */
+.side{
+position:relative;
+display:block;
+
+text-align:center;
+
+margin:12px auto;
+padding:0 20px;
+}
+
+/* boton */
 .contact{
 margin-top:30px;
 }
 
-.side{
-position:relative;
-top:auto;
-left:auto;
-right:auto;
-bottom:auto;
-
-text-align:center;
-
-margin:10px auto;
-display:block;
 }
-
-}
-
-</style>
 
 </style>
 </head>
@@ -431,4 +449,5 @@ document.body.appendChild(viewer)
 </body>
 
 </html>
+
 
