@@ -65,11 +65,19 @@ animation:noiseMove 0.4s infinite;
 
 .center{
 position:relative;
-margin-top:120px;
-margin-bottom:120px;
 display:flex;
 flex-direction:column;
 align-items:center;
+justify-content:center;
+
+width:100%;
+max-width:900px;
+
+margin:0 auto;
+padding-top:120px;
+padding-bottom:120px;
+
+z-index:2;
 }
 
 /* LOGO ANIMACION POSTER */
@@ -101,12 +109,14 @@ animation:logoGlitch 0.2s infinite;
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
-gap:14px;
-justify-content:center;
+grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+gap:20px;
+
+width:100%;
+max-width:700px;
+
 margin-top:40px;
-margin-bottom:60px;
-padding:0 20px;
+margin-bottom:40px;
 }
 
 /* PROYECTO */
@@ -272,31 +282,41 @@ to{opacity:1}
 /* MOBILE */
 /* ========================= */
 
-@media (max-width: 768px){
+@media (max-width:768px){
 
-.side{
-position:static;
-display:block;
-text-align:center;
-margin:12px auto;
-max-width:260px;
+.center{
+padding-top:80px;
+padding-bottom:80px;
 }
 
 .grid{
 grid-template-columns:repeat(2, 1fr);
-gap:14px;
+gap:16px;
 }
 
-.project{
-width:140px;
+.grid img{
+width:100%;
+height:auto;
 }
 
-.logo{
-width:180px;
+.contact{
+margin-top:30px;
+}
+
+.side{
+position:relative;
+top:auto;
+left:auto;
+right:auto;
+bottom:auto;
+
+text-align:center;
+
+margin:10px auto;
+display:block;
 }
 
 }
-
 
 </style>
 
@@ -411,3 +431,4 @@ document.body.appendChild(viewer)
 </body>
 
 </html>
+
