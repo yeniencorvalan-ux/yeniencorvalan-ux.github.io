@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Yenien Corvalán</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:#f4c542;
+font-family:Arial, sans-serif;
+overflow:hidden;
+}
+
+/* FONDO */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:url("foto.jpg") center/cover no-repeat;
+filter:contrast(140%) saturate(130%);
+z-index:-3;
+animation:bgShift 12s infinite alternate;
+}
+
+/* overlay oscuro */
+.bg::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(10,8,4,0.28); /* ajustable */
+pointer-events:none;
+}
+
+@keyframes bgShift{
+0%{transform:scale(1) translate(0,0);}
+100%{transform:scale(1.05) translate(-20px,-10px);}
+}
+
+/* RUIDO */
+
+.noise{
+position:fixed;
+width:100%;
+height:100%;
+background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.35;
+z-index:-2;
+animation:noiseMove 0.4s infinite;
+}
+
+@keyframes noiseMove{
+0%{transform:translate(0,0)}
+25%{transform:translate(1px,-1px)}
+50%{transform:translate(-1px,1px)}
+75%{transform:translate(1px,1px)}
+100%{transform:translate(-1px,-1px)}
+}
+
+/* CENTRO */
+
+.center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* LOGO ANIMACION POSTER */
+
+.logo{
+width:240px;
+margin-bottom:2px;
+cursor:pointer;
+animation:logoFloat 4s infinite ease-in-out;
+}
+
+.logo:hover{
+animation:logoGlitch 0.2s infinite;
+}
+
+@keyframes logoFloat{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+}
+
+@keyframes logoGlitch{
+0%{transform:translate(0)}
+25%{transform:translate(-2px,2px)}
+50%{transform:translate(2px,-2px)}
+75%{transform:translate(-2px,-1px)}
+100%{transform:translate(0)}
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(3, 180px);
+grid-auto-rows:225px;
+gap:14px;
+justify-content:center;
+margin-top: 40px;
+margin-bottom: 60px;
+}
+
+transform: scale(0.75);
+transform-origin: top center;
+}
+
+/* PROYECTO */
+.project{
+width:100%;
+height:100%;
+border:1px solid #ffc800;
+cursor:pointer;
+overflow:hidden;
+position:relative;
+transition:transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* IMAGEN */
+.project img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:0.4s;
+}
+
+.project:hover img{
+transform:scale(1.05);
+}
+
+/* BOTON */
+.contact{
+position: static;
+margin-top: 20px;
+margin-bottom: 20px;
+
+border: 1px solid #f4c542;
+padding: 10px 30px;
+cursor: pointer;
+transition: 0.3s;
+
+color:#f4c542;
+text-decoration:none;
+background:transparent;
+}
+
+/* fuerza color amarillo siempre */
+.contact,
+.contact:link,
+.contact:visited,
+.contact:active{
+color:#f4c542;
+text-decoration:none;
+}
+
+/* hover */
+.contact:hover{
+background:#f4c542;
+color:black;
+}
+
+/* TEXTOS */
+
+.side{
+position:fixed;
+
+font-size:15px; /* más grande */
+max-width:220px;
+line-height:1.5;
+
+color:#ffc800;
+
+text-shadow:
+0 0 6px rgba(0,0,0,0.8),
+0 2px 6px rgba(0,0,0,0.9),
+0 0 14px rgba(0,0,0,0.6);
+
+cursor:pointer;
+transition:0.3s;
+}
+
+.side:hover{
+transform:translateX(3px);
+opacity:1;
+}
+
+/* IZQUIERDA */
+.left.top{
+left:40px;
+top:25%;
+}
+
+.left.middle{
+left:40px;
+top:45%;
+}
+
+.left.bottom{
+left:40px;
+top:65%;
+}
+
+
+/* DERECHA */
+.right.top{
+right:40px;
+top:25%;
+text-align:right;
+}
+
+.right.middle{
+right:40px;
+top:45%;
+text-align:right;
+}
+
+.right.bottom{
+right:40px;
+top:65%;
+text-align:right;
+}
+
+/* NOMBRE */
+
+.name{
+position:fixed;
+bottom:20px;
+width:100%;
+text-align:center;
+letter-spacing:12px;
+font-size:14px;
+animation:nameFlicker 6s infinite;
+}
+
+@keyframes nameFlicker{
+0%,100%{opacity:1}
+50%{opacity:0.7}
+}
+
+/* FULLSCREEN */
+
+.viewer{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+cursor:pointer;
+animation:fadeIn 0.3s;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 768px){
+
+.side{
+position:static;
+display:block;
+text-align:center;
+margin:12px auto;
+max-width:260px;
+}
+
+.grid{
+grid-template-columns:repeat(2, 1fr);
+gap:14px;
+}
+
+.project{
+width:140px;
+}
+
+.logo{
+width:180px;
+}
+
+}
+
+
+</style>
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="noise"></div>
+
+<!-- IZQUIERDA -->
+
+<div class="side left top">
+Diseñador gráfico autodidacta.<br>
+Exploro identidad, imagen y emoción.
+</div>
+
+<a href="https://www.youtube.com/@yeniencq" target="_blank" class="side left middle link">
+romantizo escenas comunes<br>
+para la nostalgia del presente
+</a>
+
+<a href="https://www.youtube.com/watch?v=Bv6BqbV-kiU" target="_blank" class="side left bottom link">
+escuchá mi canción Contagiando Optimismo
+</a>
+
+<!-- DERECHA -->
+
+<a href="https://www.instagram.com/yeniencq/" target="_blank" class="side right top link">
+@yeniencq
+</a>
+
+<a href="https://www.youtube.com/watch?v=yJAJ0kXYVKo" target="_blank" class="side right middle link">
+escuchá mi canción construir desde el amor
+</a>
+
+<a href="https://www.instagram.com/yenysumundo/" target="_blank" class="side right bottom link">
+@yenysumundo
+</a>
+
+<!-- CENTRO -->
+
+<div class="center">
+
+<img src="logo.png" class="logo">
+
+<div class="grid">
+
+<div class="project" onclick="openProject(['proyecto1/1.png','proyecto1/2.png','proyecto1/3.png'])">
+<img src="proyecto1/1.png">
+</div>
+
+<div class="project" onclick="openProject(['proyecto2/1.png','proyecto2/2.png'])">
+<img src="proyecto2/1.png">
+</div>
+
+<div class="project" onclick="openProject(['proyecto3/1.png','proyecto3/2.png'])">
+<img src="proyecto3/1.png">
+</div>
+
+<div class="project" onclick="openProject(['proyecto4/1.png','proyecto4/2.png','proyecto4/3.png'])">
+<img src="proyecto4/1.png">
+</div>
+
+</div>
+
+<a href="https://wa.me/5492995814618?text=Hola,%20quiero%20trabajar%20con%20vos%20en%20un%20nuevo%20proyecto.%20Soy%20[Tu%20Nombre].%20Me%20gustaría%20recibir%20información%20sobre%20tus%20servicios%20y%20metodología."
+target="_blank"
+class="contact">
+INICIAR PROYECTO
+</a>
+
+</div>
+
+<div class="name">
+YENIEN CORVALÁN
+</div>
+
+<script>
+
+function openProject(images){
+
+let index = 0
+
+let viewer=document.createElement("div")
+viewer.className="viewer"
+
+let img=document.createElement("img")
+img.src=images[index]
+
+viewer.appendChild(img)
+
+viewer.onclick=function(){
+
+index++
+
+if(index>=images.length){
+viewer.remove()
+}else{
+img.src=images[index]
+}
+
+}
+
+document.body.appendChild(viewer)
+
+}
+
+</script>
+
+</body>
+</html>
